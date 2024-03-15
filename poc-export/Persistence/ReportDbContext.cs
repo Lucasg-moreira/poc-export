@@ -1,5 +1,6 @@
 ﻿using poc_export.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace poc_export.Persistence
 {
@@ -9,6 +10,7 @@ namespace poc_export.Persistence
         {}
 
         public DbSet<User> User { get; set; }
+        public DbSet<Sped> Speds { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -27,6 +29,19 @@ namespace poc_export.Persistence
                 new User { Id = Guid.NewGuid(), UserName = "Jane Smith", BirthDate = new DateTime(2020, 10, 12), Email = "jane@smith" },
                 new User { Id = Guid.NewGuid(), UserName = "Alice Johnson", BirthDate = new DateTime(1980, 08, 1), Email= "alice@johnson" }
             );
+
+            builder.Entity<Sped>(entity =>
+            {
+                entity.HasNoKey();
+                entity.Property(e => e.F200);
+                entity.Property(e => e.descr_obr);
+                entity.Property(e => e.cpf_pes);
+                entity.Property(e => e.F2);
+                entity.Property(e => e.Identificador_unid);
+                entity.Property(e => e.NumVend_Itv);
+                entity.Property(e => e.ValorTot_Ven);
+                entity.Property(e => e.Data_Ven);
+            });
         }
     }
 }
