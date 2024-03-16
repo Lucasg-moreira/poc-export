@@ -97,8 +97,6 @@ namespace poc_export.Controllers
 
                 StringBuilder spedContentBuilder = new StringBuilder();
 
-                spedContentBuilder.AppendLine(Sped.HeaderLine());
-
                 foreach (Sped sped in speds)
                 {
                     spedContentBuilder.AppendLine(sped.ToSpedFormat());
